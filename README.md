@@ -11,10 +11,10 @@ computer assignments in Approximation Theory courses by
 Prof. Andrew Knyazev, University of Colorado Denver, USA.
 
 Team Fall 98 (Revision 1.0):
-        Chanchai Aniwathananon
-        Crhistopher Mehl
-        David A. Duran
-        Saulo P. Oliveira
+        * Chanchai Aniwathananon
+        * Crhistopher Mehl
+        * David A. Duran
+        * Saulo P. Oliveira
 
 Team Spring 11 (Revision 1.1): Manuchehr Aminian
 
