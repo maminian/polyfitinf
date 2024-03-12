@@ -27,3 +27,5 @@ Code is expected to run in:
 * MATLAB 2023b
 * Octave 8.3.0
 
+## Licensing
+Code is licensed under a BSD-3 license. See LICENSE for details.
