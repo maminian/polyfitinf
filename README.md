@@ -19,9 +19,12 @@ Team Fall 98 (Revision 1.0):
 
 Team Spring 11 (Revision 1.1): Manuchehr Aminian
 
+See also: 
 
-See also: Communications of the ACM, V14, pp.355-356(1971) https://dl.acm.org/doi/10.1145/362588.362600
-
+* Communications of the ACM, V14, pp.355-356(1971) https://dl.acm.org/doi/10.1145/362588.362600
+* http://www.netlib.org/toms/501
+* https://www.mathworks.com/matlabcentral/fileexchange/32425-best-polynomial-approximation-in-uniform-norm
+* https://octave.sourceforge.io/optim/function/polyfitinf.html
 
 ## Support
 Code is expected to run in:
