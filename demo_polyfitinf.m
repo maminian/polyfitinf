@@ -3,9 +3,9 @@ rng(2024)
 
 %%%%%%%%%
 
-M = 5; % chosen degree of polynomial fit
+M = 8; % chosen degree of polynomial fit
 K = 0; % parity of polynomial; 0=mixed (general); 1=odd; 2=even
-niter = 100000;
+niter = 200;
 epsh = 1e-8;
 
 % example data

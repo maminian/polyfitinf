@@ -127,14 +127,21 @@ A = []; REF = []; HMAX = []; H = []; R = 0; EQUAL = -2;
 %%%% end preassignment
 
 %       Setting M with respect to K
-MOLD = M;
 
 switch K
+
     case 1
         K0 = 0;
         K1 = 1;
         Q1 = 1;
         Q2 = 2;
+        
+        % If the user has input M even, but wants an even polynomial (K=1),
+        % subtract 1 from M to prevent errors later; and append "0*x^M" at the end.
+        if mod(M,2) == 0
+            M = M-1;
+        end
+
         M =  (M-Q1)/2;
     case 2
         K0 = 0;
@@ -142,9 +149,8 @@ switch K
         Q1 = 0;
         Q2 = 2;
         
-        % If the user has input odd M, but wants an even polynomial,
-        % subtract 1 from M to prevent errors later. The outputs should be
-        % mathematically equivalent.
+        % If the user has input M odd, but wants an even polynomial (K=2),
+        % subtract 1 from M to prevent errors later; and append "0*x^M" at the end.
         if mod(M,2) == 1
             M = M-1;
         end
@@ -184,7 +190,7 @@ if any(diff(X)<0)
     error('Input Error: Abscissae out of order');
 end
 
-ITEMP = MOLD + 1;
+ITEMP = M + 1;
 
 A = zeros(1,ITEMP);
 
@@ -324,47 +330,32 @@ FLAG = 1;
 while ( (R < MAXIT) && (FLAG == 1) )
     
     R = R + 1;   % LABEL 350
-    %S = 1.;
+    S = 1.;
     
     %          Computation of div. differences schemes
     
     if (K1 > 0)
         
         %               If the polynomial is mixed or even:
-        %for I = 1:P
-        %    S = -S;
-        %    ITEMP = I + 1;
-        %    J = Z(ITEMP);
-        %    Q = X(J);
-        %    C(I) = (H(J) + S*T)/Q;
-        %    D(I) = S/Q;
-        %end
-
-	I = (1:P);
-   	S = (-1).^I;
-	ITEMP = I+1;
-	J = Z(ITEMP);
-	C(I) = (H(J) + S*T)./X(J);
-	D(I) = S./Q;
-	clear I ITEMP S J
+        for I = 1:P
+            S = -S;
+            ITEMP = I + 1;
+            J = Z(ITEMP);
+            Q = X(J);
+            C(I) = (H(J) + S*T)/Q;
+            D(I) = S/Q;
+        end
     
     else
         
         %               If the polynomial is odd:
-        %for I = 1:P
-        %    S = -S;
-        %    ITEMP = I + 1;
-        %    ITEMP = Z(ITEMP);
-        %    C(I) = H(ITEMP) + S*T;
-        %    D(I) = S;
-        %end
-
-	I = (1:P);
-   	S = (-1).^I;
-	ITEMP = I+1;
-	C(I) = H( Z(ITEMP) ) + S.*T;
-	D(I) = S;
-    clear I ITEMP S
+        for I = 1:P
+            S = -S;
+            ITEMP = I + 1;
+            ITEMP = Z(ITEMP);
+            C(I) = H(ITEMP) + S*T;
+            D(I) = S;
+        end
         
     end
     
@@ -560,8 +551,6 @@ end
 
 % Reverse the order of A to make it compatible with MATLAB'S polyval() function.
 A = A(end:-1:1);
-
-
 
 end
 %	****************************************** end of APPROX
